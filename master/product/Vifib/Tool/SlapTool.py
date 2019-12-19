@@ -653,6 +653,15 @@ class SlapTool(BaseTool):
     return self._destroyedComputerPartition(computer_id, computer_partition_id)
 
   security.declareProtected(Permissions.AccessContentsInformation,
+    'availableComputerPartition')
+  def availableComputerPartition(self, computer_id, computer_partition_id):
+    """
+    # RAFAEL: Included here for backward compatibility with older versions
+      of slapos.
+    """
+    pass 
+
+  security.declareProtected(Permissions.AccessContentsInformation,
     'requestComputerPartition')
   def requestComputerPartition(self, computer_id=None,
       computer_partition_id=None, software_release=None, software_type=None,
