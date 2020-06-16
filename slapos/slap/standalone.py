@@ -61,6 +61,8 @@ from .interface.slap import IRequester
 from ..grid.slapgrid import SLAPGRID_PROMISE_FAIL
 
 from .slap import slap
+from ..util import dumps
+
 from ..grid.svcbackend import getSupervisorRPC
 
 
@@ -534,7 +536,7 @@ class StandaloneSlapOS(object):
                   **locals()))
 
     self.computer.updateConfiguration(
-        xml_marshaller.xml_marshaller.dumps({
+        dumps({
             'address': ipv4_address,
             'netmask': '255.255.255.255',
             'partition_list': partition_list,
