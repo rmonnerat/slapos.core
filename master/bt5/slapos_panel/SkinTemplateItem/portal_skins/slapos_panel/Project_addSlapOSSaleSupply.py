@@ -18,6 +18,7 @@ sale_supply = portal.sale_supply_module.newContent(
   portal_type="Sale Supply",
   source_project_value=project,
   price_currency_value=price_currency,
+  # XXX please review me!
   start_date_range_min=DateTime()
 )
 
