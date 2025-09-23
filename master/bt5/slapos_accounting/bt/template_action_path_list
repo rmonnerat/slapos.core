@@ -3,6 +3,8 @@ Computer Consumption TioXML File | jump_related_consumption_delivery
 Computer Consumption TioXML File | view
 Computer Consumption TioXML File | view_edit
 Consumption Delivery Cell | view
+Consumption Delivery Group Module | view
+Consumption Delivery Group | view
 Consumption Delivery Line | price_view
 Consumption Delivery Line | profile_view
 Consumption Delivery Line | quantity_view
@@ -19,6 +21,12 @@ Consumption Document Module | view
 Consumption Supply Line | view
 Consumption Supply Module | view
 Consumption Supply | view
+Consumption Transaction Line | price
+Consumption Transaction Line | quantity
+Consumption Transaction Line | view
+Consumption Transaction Line | view_trade_model
+Consumption Transaction Module | view
+Consumption Transaction | view
 Hosting Subscription | periodicity
 Instance Tree | jump_to_related_open_order_line
 Organisation | create_slapos_credit_note_sale_invoice_transaction

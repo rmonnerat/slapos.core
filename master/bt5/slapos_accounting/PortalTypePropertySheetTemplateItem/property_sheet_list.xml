@@ -29,6 +29,12 @@
   <item>ConsumptionSupplyConstraint</item>
   <item>SlapOSVirtualMasterSourceProjectConstraint</item>
  </portal_type>
+ <portal_type id="Consumption Transaction">
+  <item>SlapOSLedgerAccountingConstraint</item>
+ </portal_type>
+ <portal_type id="Consumption Transaction Line">
+  <item>SlapOSMovementConstraint</item>
+ </portal_type>
  <portal_type id="Hosting Subscription">
   <item>SlapOSAccountingHostingSubscriptionConstraint</item>
   <item>SlapOSLedgerConstraint</item>

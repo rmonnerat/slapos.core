@@ -50,7 +50,5 @@ consumption_delivery.Base_checkConsistency()
 consumption_delivery.confirm(comment="Created from %s" % context.getRelativeUrl())
 consumption_delivery.start()
 consumption_delivery.stop()
-consumption_delivery.deliver()
-consumption_delivery.startBuilding()
 
 return consumption_delivery

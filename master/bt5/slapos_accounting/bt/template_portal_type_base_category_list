@@ -1,9 +1,12 @@
 Computer Consumption TioXML File | contributor
+Consumption Delivery Group Module | business_application
 Consumption Delivery Line | predecessor
 Consumption Delivery Line | requirement
 Consumption Delivery Module | business_application
 Consumption Document Module | business_application
 Consumption Supply Module | business_application
+Consumption Transaction Module | business_application
+Consumption Transaction | specialise
 Hosting Subscription | follow_up
 Slave Instance | causality
 Software Instance | causality

@@ -13,15 +13,19 @@
  </chain>
  <chain>
   <type>Consumption Delivery</type>
-  <workflow>delivery_causality_interaction_workflow, delivery_causality_workflow, edit_workflow, immobilisation_workflow, packing_list_container_workflow, packing_list_workflow, slapos_accounting_interaction_workflow, slapos_simulation_interaction_workflow</workflow>
+  <workflow>edit_workflow, packing_list_workflow</workflow>
  </chain>
  <chain>
   <type>Consumption Delivery Cell</type>
-  <workflow>delivery_movement_causality_interaction_workflow, pricing_interaction_workflow</workflow>
+  <workflow>pricing_interaction_workflow</workflow>
+ </chain>
+ <chain>
+  <type>Consumption Delivery Group</type>
+  <workflow>edit_workflow, slapos_consumption_delivery_group_workflow</workflow>
  </chain>
  <chain>
   <type>Consumption Delivery Line</type>
-  <workflow>delivery_movement_causality_interaction_workflow, edit_workflow, movement_resource_interaction_workflow, pricing_interaction_workflow, trade_matrix_workflow</workflow>
+  <workflow>edit_workflow, movement_resource_interaction_workflow, pricing_interaction_workflow, trade_matrix_workflow</workflow>
  </chain>
  <chain>
   <type>Consumption Supply</type>
@@ -30,6 +34,14 @@
  <chain>
   <type>Consumption Supply Line</type>
   <workflow>edit_workflow, reindex_object_interaction_workflow, supply_line_interaction_workflow</workflow>
+ </chain>
+ <chain>
+  <type>Consumption Transaction</type>
+  <workflow>accounting_workflow, edit_workflow</workflow>
+ </chain>
+ <chain>
+  <type>Consumption Transaction Line</type>
+  <workflow>delivery_movement_causality_interaction_workflow, edit_workflow, movement_resource_interaction_workflow, pricing_interaction_workflow, trade_matrix_workflow</workflow>
  </chain>
  <chain>
   <type>Instance Tree</type>

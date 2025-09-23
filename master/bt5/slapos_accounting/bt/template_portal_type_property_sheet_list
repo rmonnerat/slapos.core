@@ -14,6 +14,8 @@ Consumption Delivery | SlapOSLedgerConstraint
 Consumption Delivery | SlapOSSaleProfileConstraint
 Consumption Supply | ConsumptionSupplyConstraint
 Consumption Supply | SlapOSVirtualMasterSourceProjectConstraint
+Consumption Transaction Line | SlapOSMovementConstraint
+Consumption Transaction | SlapOSLedgerAccountingConstraint
 Hosting Subscription | SlapOSAccountingHostingSubscriptionConstraint
 Hosting Subscription | SlapOSLedgerConstraint
 Internal Invoice Transaction | SlapOSLedgerAccountingConstraint
