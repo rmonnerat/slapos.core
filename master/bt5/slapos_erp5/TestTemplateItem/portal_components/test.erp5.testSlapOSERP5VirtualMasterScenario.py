@@ -113,7 +113,6 @@ class TestSlapOSVirtualMasterScenarioMixin(DefaultScenarioMixin):
     accountant_person = self.joinSlapOS(self.web_site, accountant_reference)
     self.addAccountingManagerAssignment(accountant_person)
 
-    self.tic()
     # hooray, now it is time to create accounting data
     self.login(accountant_person.getUserId())
 
@@ -130,8 +129,8 @@ class TestSlapOSVirtualMasterScenarioMixin(DefaultScenarioMixin):
     sale_reference = 'sales-%s' % self.generateNewId()
     sale_person = self.joinSlapOS(self.web_site, sale_reference)
     self.addSaleManagerAssignment(sale_person)
-
     self.tic()
+
     # hooray, now it is time to create sale data
     self.login(sale_person.getUserId())
 
@@ -280,7 +279,6 @@ class TestSlapOSVirtualMasterScenarioMixin(DefaultScenarioMixin):
     # lets join as slapos administrator, which will manager the project
     owner_reference = 'project-%s' % self.generateNewId()
     owner_person = self.joinSlapOS(self.web_site, owner_reference)
-    self.tic()
 
     self.login(sale_person.getUserId())
     with PinnedDateTime(self, DateTime('2020/01/01')):
@@ -562,7 +560,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       # lets join as slapos administrator, which will own few compute_nodes
       owner_reference = 'owner-%s' % self.generateNewId()
       owner_person = self.joinSlapOS(self.web_site, owner_reference)
-      self.login()
       # first slapos administrator assignment can only be created by
       # the erp5 manager
       self.addProjectProductionManagerAssignment(owner_person, project)
@@ -593,8 +590,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       # compute_node
       public_reference = 'public-%s' % self.generateNewId()
       public_person = self.joinSlapOS(self.web_site, public_reference)
-
-      self.login()
       public_person.setCareerSubordinationValue(customer_subordination_organisation)
 
       # XXX Instance will be paid by the organisation
@@ -733,9 +728,7 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       project_owner_reference = 'project-%s' % self.generateNewId()
       project_owner_person = self.joinSlapOS(self.web_site, project_owner_reference)
 
-      self.tic()
       self.login(sale_person.getUserId())
-
       project_relative_url = self.addProject(
         is_accountable=True, person=project_owner_person, currency=currency)
 
@@ -773,7 +766,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       owner_reference = 'owner-%s' % self.generateNewId()
       owner_person = self.joinSlapOS(self.web_site, owner_reference)
 
-      self.login()
       # first slapos administrator assignment can only be created by
       # the erp5 manager
       self.addProjectProductionManagerAssignment(owner_person, project)
@@ -837,7 +829,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       # compute_node
       public_reference = 'public-%s' % self.generateNewId()
       public_person = self.joinSlapOS(self.web_site, public_reference)
-      self.login()
 
     with PinnedDateTime(self, DateTime('2024/02/17 01:01')):
       # Simulate access from compute_node, to open the capacity scope
@@ -993,8 +984,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       shared_public_reference = 'shared_public-%s' % self.generateNewId()
       shared_public_person = self.joinSlapOS(self.web_site, shared_public_reference)
 
-      self.login()
-
     with PinnedDateTime(self, DateTime('2024/02/17 00:05')):
       public_instance_title = 'Public title %s' % self.generateNewId()
       self.checkInstanceAllocation(public_person.getUserId(),
@@ -1075,7 +1064,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       owner_reference = 'owner-%s' % self.generateNewId()
       owner_person = self.joinSlapOS(self.web_site, owner_reference)
 
-      self.tic()
       self.login(sale_person.getUserId())
       # create a default project
       project_relative_url = self.addProject(person=owner_person, currency=currency)
@@ -1117,7 +1105,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       # compute_node
       public_reference = 'public-%s' % self.generateNewId()
       public_person = self.joinSlapOS(self.web_site, public_reference)
-      self.login()
 
     with PinnedDateTime(self, DateTime('2024/02/17 00:05')):
       public_instance_title = 'Public title %s' % self.generateNewId()
@@ -1169,7 +1156,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       remote_owner_reference = 'remote-owner-%s' % self.generateNewId()
       remote_owner_person = self.joinSlapOS(self.web_site, remote_owner_reference)
 
-      self.tic()
       self.login(sale_person.getUserId())
       # create a default project
       remote_project_relative_url = self.addProject(person=remote_owner_person, currency=currency)
@@ -1247,8 +1233,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       # compute_node
       public_reference = 'public-%s' % self.generateNewId()
       public_person = self.joinSlapOS(self.web_site, public_reference)
-
-      self.login()
 
     with PinnedDateTime(self, DateTime('2024/02/17 01:01')):
       public_instance_title = 'Public title %s' % self.generateNewId()
@@ -1361,7 +1345,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       remote_owner_reference = 'remote-owner-%s' % self.generateNewId()
       remote_owner_person = self.joinSlapOS(self.web_site, remote_owner_reference)
 
-      self.tic()
       self.login(sale_person.getUserId())
 
       # create a default project
@@ -1422,7 +1405,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       # compute_node
       remote_public_reference = 'remote-public-%s' % self.generateNewId()
       remote_public_person = self.joinSlapOS(self.web_site, remote_public_reference)
-
 
       ####################################
       # Create a local project
