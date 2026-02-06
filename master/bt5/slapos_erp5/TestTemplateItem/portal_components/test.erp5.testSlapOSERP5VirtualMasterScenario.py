@@ -444,7 +444,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
     owner_reference = 'owner-%s' % self.generateNewId()
     owner_person = self.joinSlapOS(self.web_site, owner_reference)
 
-    self.login()
     self.tic()
     self.login(owner_person.getUserId())
 
@@ -765,7 +764,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       project_owner_reference = 'project-%s' % self.generateNewId()
       project_owner_person = self.joinSlapOS(self.web_site, project_owner_reference)
 
-      self.login()
       self.tic()
       self.login(sale_person.getUserId())
 
@@ -995,7 +993,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       owner_reference = 'owner-%s' % self.generateNewId()
       owner_person = self.joinSlapOS(self.web_site, owner_reference)
 
-      self.login()
       self.tic()
       self.login(sale_person.getUserId())
       # create a default project
@@ -1130,7 +1127,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       owner_reference = 'owner-%s' % self.generateNewId()
       owner_person = self.joinSlapOS(self.web_site, owner_reference)
 
-      self.login()
       self.tic()
       self.login(sale_person.getUserId())
       # create a default project
@@ -1229,7 +1225,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       remote_owner_reference = 'remote-owner-%s' % self.generateNewId()
       remote_owner_person = self.joinSlapOS(self.web_site, remote_owner_reference)
 
-      self.login()
       self.tic()
       self.login(sale_person.getUserId())
       # create a default project

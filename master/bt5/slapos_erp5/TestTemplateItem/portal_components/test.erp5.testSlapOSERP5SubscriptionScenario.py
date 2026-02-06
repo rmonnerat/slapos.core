@@ -594,7 +594,6 @@ class TestSlapOSSubscriptionScenario(TestSlapOSSubscriptionScenarioMixin):
       project_owner_reference = 'project-%s' % self.generateNewId()
       project_owner_person = self.joinSlapOS(self.web_site, project_owner_reference)
 
-      self.login()
       self.tic()
       self.login(sale_person.getUserId())
 
