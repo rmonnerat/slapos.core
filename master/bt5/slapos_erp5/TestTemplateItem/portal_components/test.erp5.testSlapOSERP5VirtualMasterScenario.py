@@ -371,7 +371,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       # Uninstall from compute_node
       self.login()
       self.simulateSlapgridSR(public_server)
-      self.tic()
 
     # Ensure no unexpected object has been created
     # 3 allocation supply, line, cell
@@ -625,7 +624,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
 
       self.login()
       self.simulateSlapgridSR(public_server)
-      self.tic()
 
     # Check stock
     inventory_list = self.portal.portal_simulation.getCurrentInventoryList(**{
@@ -822,7 +820,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       self.login()
       self.simulateSlapgridSR(public_server)
 
-      self.tic()
 
     # Check stock
     inventory_list = self.portal.portal_simulation.getCurrentInventoryList(**{
@@ -972,9 +969,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       self.login()
       self.simulateSlapgridSR(public_server)
 
-    self.tic()
-
-    self.login()
     # Ensure no unexpected object has been created
     # 6 allocation supply/line/cell
     # 4 assignment request
