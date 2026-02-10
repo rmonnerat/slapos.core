@@ -272,7 +272,6 @@ class TestSlapOSVirtualMasterScenarioMixin(DefaultScenarioMixin):
 
   def bootstrapAccountingTest(self):
     currency, _, _, sale_person, accountant_person = self.bootstrapVirtualMasterTest()
-    self.tic()
 
     # lets join as slapos administrator, which will manager the project
     owner_reference = 'project-%s' % self.generateNewId()
@@ -308,7 +307,6 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
   def test_virtual_master_without_accounting_scenario(self):
     with PinnedDateTime(self, DateTime('2024/02/17')):
       currency, _, _, sale_person, _ = self.bootstrapVirtualMasterTest(is_virtual_master_accountable=False)
-      self.tic()
 
       # lets join as slapos administrator, which will own few compute_nodes
       owner_reference = 'owner-%s' % self.generateNewId()
@@ -373,10 +371,8 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       # Uninstall from compute_node
       self.login()
       self.simulateSlapgridSR(public_server)
-
       self.tic()
 
-    self.login()
     # Ensure no unexpected object has been created
     # 3 allocation supply, line, cell
     # 3 assignment request
