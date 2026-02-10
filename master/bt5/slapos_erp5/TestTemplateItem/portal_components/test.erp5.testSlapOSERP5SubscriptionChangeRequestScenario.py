@@ -35,16 +35,9 @@ class TestSlapOSSubscriptionChangeRequestScenario(TestSlapOSSubscriptionChangeRe
 
       # hooray, now it is time to create compute_nodes
       self.login(sale_person.getUserId())
-
-      # create a default project
-      project_relative_url = self.addProject(person=owner_person, currency=currency)
-
-      self.login()
-      project = self.portal.restrictedTraverse(project_relative_url)
-      self.updateSystemPreference(project_relative_url)
+      project = self.addDefaultProject(person=owner_person, currency=currency)
 
       self.login(owner_person.getUserId())
-
       # and install some software on them
       public_server_software = self.generateNewSoftwareReleaseUrl()
       public_instance_type = 'public type'
@@ -181,11 +174,7 @@ class TestSlapOSSubscriptionChangeRequestScenario(TestSlapOSSubscriptionChangeRe
       self.login(sale_person.getUserId())
 
       # create a default project
-      project_relative_url = self.addProject(person=owner_person, currency=currency)
-
-      self.login()
-      project = self.portal.restrictedTraverse(project_relative_url)
-      self.updateSystemPreference(project_relative_url)
+      project = self.addDefaultProject(person=owner_person, currency=currency)
       self.login(owner_person.getUserId())
 
       # and install some software on them
@@ -317,16 +306,12 @@ class TestSlapOSSubscriptionChangeRequestScenario(TestSlapOSSubscriptionChangeRe
       self.login(sale_person.getUserId())
 
       # create a default project
-      project_relative_url = self.addProject(person=owner_person, currency=currency)
+      project = self.addDefaultProject(person=owner_person, currency=currency)
 
-      self.login()
-      project = self.portal.restrictedTraverse(project_relative_url)
-      self.updateSystemPreference(project_relative_url)
       self.login(owner_person.getUserId())
       public_server_title = 'Public Server for %s' % owner_reference
       self.requestComputeNode(public_server_title, project.getReference())
       self.tic()
-      self.logout()
 
     with PinnedDateTime(self, DateTime('2024/01/01')):
       public_reference2 = 'public2-%s' % self.generateNewId()
@@ -406,12 +391,9 @@ class TestSlapOSSubscriptionChangeRequestScenario(TestSlapOSSubscriptionChangeRe
       self.login(sale_person.getUserId())
 
       # create a default project
-      project_relative_url = self.addProject(person=owner_person, currency=currency)
+      project = self.addDefaultProject(person=owner_person, currency=currency)
 
-      self.login()
-      project = self.portal.restrictedTraverse(project_relative_url)
-      self.updateSystemPreference(project_relative_url)
-      self.login(owner_person.getUserId())
+    self.login(owner_person.getUserId())
 
     with PinnedDateTime(self, DateTime('2024/02/25')):
       self.login(sale_person.getUserId())
@@ -488,7 +470,9 @@ class TestSlapOSSubscriptionChangeRequestScenario(TestSlapOSSubscriptionChangeRe
       self.login(sale_person.getUserId())
 
       # create a default project
-      project_relative_url = self.addProject(person=owner_person, currency=currency, is_accountable=True)
+      project = self.addDefaultProject(
+        person=owner_person, currency=currency, is_accountable=True)
+      project_relative_url = project.getRelativeUrl()
       self.tic()
       sale_supply = self.portal.portal_catalog.getResultValue(
         portal_type='Sale Supply',
@@ -500,9 +484,6 @@ class TestSlapOSSubscriptionChangeRequestScenario(TestSlapOSSubscriptionChangeRe
       )[0].edit(base_price=99)
       sale_supply.validate()
 
-      self.login()
-      project = self.portal.restrictedTraverse(project_relative_url)
-      self.updateSystemPreference(project_relative_url)
       self.login(owner_person.getUserId())
 
     with PinnedDateTime(self, DateTime('2024/02/25')):
@@ -587,11 +568,8 @@ class TestSlapOSSubscriptionChangeRequestScenario(TestSlapOSSubscriptionChangeRe
       self.login(sale_person.getUserId())
 
       # create a default project
-      project_relative_url = self.addProject(person=owner_person, currency=currency)
-
-      self.login()
-      project = self.portal.restrictedTraverse(project_relative_url)
-      self.updateSystemPreference(project_relative_url)
+      project = self.addDefaultProject(
+        person=owner_person, currency=currency)
 
     # XXX XXX XXX XXX '2024/02/25'
     with PinnedDateTime(self, DateTime('2024/02/27')):
@@ -682,11 +660,8 @@ class TestSlapOSSubscriptionChangeRequestScenario(TestSlapOSSubscriptionChangeRe
       self.login(sale_person.getUserId())
 
       # create a default project
-      project_relative_url = self.addProject(person=owner_person, currency=currency)
-
-      self.login()
-      project = self.portal.restrictedTraverse(project_relative_url)
-      self.updateSystemPreference(project_relative_url)
+      project = self.addDefaultProject(
+        person=owner_person, currency=currency)
 
       #############################
       # Set a custom price, to ensure changing later the vat will keep the price
