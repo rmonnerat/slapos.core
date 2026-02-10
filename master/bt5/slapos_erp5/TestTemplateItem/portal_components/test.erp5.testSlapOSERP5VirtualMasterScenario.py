@@ -566,7 +566,7 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       # XXX Instance will be paid by the organisation
       instance_trade_condition = self.portal.portal_catalog.getResultValue(
         portal_type='Sale Trade Condition',
-        source_project__relative_url=project_relative_url,
+        source_project__relative_url=project.getRelativeUrl(),
         trade_condition_type__uid=self.portal.portal_categories.trade_condition_type.instance_tree.getUid(),
         validation_state='validated'
       )
@@ -1128,7 +1128,7 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
       ####################################
       self.login(sale_person.getUserId())
       # create a default project
-      project_relative_url = self.addDefaulttProject(
+      project = self.addDefaultProject(
         person=remote_public_person, currency=currency)
 
       owner_person = remote_public_person
