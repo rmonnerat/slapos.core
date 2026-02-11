@@ -301,6 +301,16 @@ class TestSlapOSVirtualMasterScenarioMixin(DefaultScenarioMixin):
     )
     self.tic()
 
+  def removeSoftwareReleaseFromComputeNode(self, computer_owner,
+       compute_node, software_release):
+    # and uninstall some software on them
+    self.login(computer_owner.getUserId())
+    self.supplySoftware(
+      compute_node, software_release,
+      state='destroyed')
+
+    self.login()
+    self.simulateSlapgridSR(compute_node)
 
 class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
 
@@ -363,14 +373,8 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
           public_server_software, public_instance_type, public_server,
           project.getReference())
 
-      # and uninstall some software on them
-      self.login(owner_person.getUserId())
-      self.supplySoftware(public_server, public_server_software,
-                          state='destroyed')
-
-      # Uninstall from compute_node
-      self.login()
-      self.simulateSlapgridSR(public_server)
+      self.removeSoftwareReleaseFromComputeNode(owner_person,
+        public_server, public_server_software)
 
     # Ensure no unexpected object has been created
     # 3 allocation supply, line, cell
@@ -617,13 +621,8 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
           public_server_software, public_instance_type, public_server,
           project.getReference())
 
-      # and uninstall some software on them
-      self.login(owner_person.getUserId())
-      self.supplySoftware(public_server, public_server_software,
-                          state='destroyed')
-
-      self.login()
-      self.simulateSlapgridSR(public_server)
+      self.removeSoftwareReleaseFromComputeNode(owner_person,
+        public_server, public_server_software)
 
     # Check stock
     inventory_list = self.portal.portal_simulation.getCurrentInventoryList(**{
@@ -812,13 +811,8 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
           public_server_software, public_instance_type, public_server,
           project.getReference())
 
-      # and uninstall some software on them
-      self.login(owner_person.getUserId())
-      self.supplySoftware(public_server, public_server_software,
-                          state='destroyed')
-
-      self.login()
-      self.simulateSlapgridSR(public_server)
+      self.removeSoftwareReleaseFromComputeNode(owner_person,
+        public_server, public_server_software)
 
 
     # Check stock
@@ -961,13 +955,8 @@ class TestSlapOSVirtualMasterScenario(TestSlapOSVirtualMasterScenarioMixin):
           slave_server_software, slave_instance_type, public_server,
           project.getReference())
 
-      # and uninstall some software on them
-      self.login(owner_person.getUserId())
-      self.supplySoftware(public_server, public_server_software,
-                          state='destroyed')
-
-      self.login()
-      self.simulateSlapgridSR(public_server)
+      self.removeSoftwareReleaseFromComputeNode(owner_person,
+        public_server, public_server_software)
 
     # Ensure no unexpected object has been created
     # 6 allocation supply/line/cell
