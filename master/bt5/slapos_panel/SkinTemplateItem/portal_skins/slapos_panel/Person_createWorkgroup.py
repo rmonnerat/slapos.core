@@ -4,7 +4,6 @@ translate = portal.Base_translateString
 
 assert person.getPortalType() == "Person"
 
-
 workgroup = portal.workgroup_module.newContent(
   portal_type='Workgroup',
   title=title,
@@ -15,6 +14,8 @@ if len(workgroup.checkConsistency()) != 0:
   raise AssertionError(workgroup.checkConsistency()[0])
 
 workgroup.submit(comment='Created by %s' % person.getRelativeUrl())
+if batch:
+  return workgroup
 
 return workgroup.Base_redirect(
   'view',
