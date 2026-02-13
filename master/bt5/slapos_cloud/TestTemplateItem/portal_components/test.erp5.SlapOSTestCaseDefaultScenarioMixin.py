@@ -610,15 +610,19 @@ class DefaultScenarioMixin(TestSlapOSSecurityMixin):
     )
 
     # let's find instances of user and check connection strings
-    instance_tree_list = [q.getObject() for q in
-        self._getCurrentInstanceTreeList()
-        if q.getTitle() == instance_title]
-
+    instance_tree_list = self._getCurrentInstanceTreeList(title=instance_title)
     self.assertEqual(0, len(instance_tree_list))
 
   def checkInstanceUnallocation(self, person_user_id,
       person_reference, instance_title,
-      software_release, software_type, server, project_reference):
+      software_release, software_type, server, project_reference,
+      workgroup=None):
+
+    workgroup_reference = None
+    kw = {'title': instance_title }
+    if workgroup is not None:
+      workgroup_reference = workgroup.getReference()
+      kw['destination_section'] = workgroup
 
     self.login(person_user_id)
     self.personRequestInstanceNotReady(
@@ -626,13 +630,14 @@ class DefaultScenarioMixin(TestSlapOSSecurityMixin):
       software_type=software_type,
       partition_reference=instance_title,
       state='<marshal><string>destroyed</string></marshal>',
-      project_reference=project_reference
+      project_reference=project_reference,
+      workgroup_reference=workgroup_reference
     )
 
     # now instantiate it on compute_node and set some nice connection dict
     self.simulateSlapgridUR(server)
 
-    instance_tree_list = self._getCurrentInstanceTreeList(title=instance_title)
+    instance_tree_list = self._getCurrentInstanceTreeList(**kw)
     self.assertEqual(0, len(instance_tree_list))
 
   def checkServiceSubscriptionRequest(self, service, simulation_state='invalidated'):
@@ -649,19 +654,24 @@ class DefaultScenarioMixin(TestSlapOSSecurityMixin):
 
   def checkInstanceAllocation(self, person_user_id, person_reference,
       instance_title, software_release, software_type, server,
-      project_reference):
+      project_reference, workgroup=None):
 
     self.login(person_user_id)
+    workgroup_reference = None
+    kw = {'title': instance_title }
+    if workgroup is not None:
+      workgroup_reference = workgroup.getReference()
+      kw['destination_section'] = workgroup
 
     self.personRequestInstanceNotReady(
       software_release=software_release,
       software_type=software_type,
       partition_reference=instance_title,
-      project_reference=project_reference
+      project_reference=project_reference,
+      workgroup_reference=workgroup_reference
     )
     self.tic()
 
-    # XXX search only for this user
     instance_tree = self.portal.portal_catalog.getResultValue(
       portal_type="Instance Tree",
       title=instance_title,
@@ -675,14 +685,15 @@ class DefaultScenarioMixin(TestSlapOSSecurityMixin):
       software_release=software_release,
       software_type=software_type,
       partition_reference=instance_title,
-      project_reference=project_reference
+      project_reference=project_reference,
+      workgroup_reference=workgroup_reference
     )
 
     # now instantiate it on compute_node and set some nice connection dict
     self.simulateSlapgridCP(server)
 
     # let's find instances of user and check connection strings
-    instance_tree_list = self._getCurrentInstanceTreeList(title=instance_title)
+    instance_tree_list = self._getCurrentInstanceTreeList(**kw)
     self.assertEqual(1, len(instance_tree_list))
     instance_tree = instance_tree_list[0]
 
