@@ -781,9 +781,8 @@ class DefaultScenarioMixin(TestSlapOSSecurityMixin):
     self.simulateSlapgridCP(server)
 
     # let's find instances of user and check connection strings
-    instance_tree_list = [q.getObject() for q in
-        self._getCurrentInstanceTreeList()
-        if q.getTitle() == instance_title]
+    instance_tree_list = self._getCurrentInstanceTreeList(
+        title=instance_title)
     self.assertEqual(1, len(instance_tree_list))
     instance_tree = instance_tree_list[0]
 
